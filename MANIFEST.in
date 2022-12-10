@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include frappe_dynamic_og *.css
+recursive-include frappe_dynamic_og *.csv
+recursive-include frappe_dynamic_og *.html
+recursive-include frappe_dynamic_og *.ico
+recursive-include frappe_dynamic_og *.js
+recursive-include frappe_dynamic_og *.json
+recursive-include frappe_dynamic_og *.md
+recursive-include frappe_dynamic_og *.png
+recursive-include frappe_dynamic_og *.py
+recursive-include frappe_dynamic_og *.svg
+recursive-include frappe_dynamic_og *.txt
+recursive-exclude frappe_dynamic_og *.pyc
