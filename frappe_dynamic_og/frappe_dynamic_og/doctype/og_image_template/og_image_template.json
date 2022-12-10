@@ -7,6 +7,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "is_enabled",
   "for_doctype",
   "column_break_orqw",
   "template_html"
@@ -29,11 +30,17 @@
   {
    "fieldname": "column_break_orqw",
    "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_enabled",
+   "fieldtype": "Check",
+   "label": "Is Enabled?"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-12-10 21:59:15.228469",
+ "modified": "2022-12-11 01:15:41.001741",
  "modified_by": "Administrator",
  "module": "Frappe Dynamic Og",
  "name": "OG Image Template",
