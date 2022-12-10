@@ -10,9 +10,9 @@ self = frappe._dict({
     "name": "whatsapp_integration"
 })
 
+# will come from the og image template
 doctype_name = "Marketplace App"
 
-# will come from the og image template
 template_html = """
 <div style="color: white; height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column">    
     <h1 style="font-size: 40px">{{doc.title}}</h1>
