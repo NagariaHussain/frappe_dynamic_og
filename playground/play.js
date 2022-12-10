@@ -5,23 +5,12 @@ import { Resvg } from "@resvg/resvg-js";
 import { html as toReactElement } from "satori-html";
 
 const output_path = process.argv[2];
+const content = process.argv[3];
 
 const fontFile = await fsPromises.readFile("Poppins-Bold.ttf");
 const font = fontFile;
 
-// Will come after jinja template has been rendered
-const template = (
-  prefix,
-  title,
-  subtitle
-) => `<div style="color: white; height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column">    
-    <h1 style="font-size: 40px">${prefix}${title}</h1>
-    <h2 style="font-size: 20px">${subtitle}</h2>
-</div>`;
-
 const width = 1200;
-
-const content = template("prefix", "title", "subtitle");
 
 const svg = await satori(toReactElement(content), {
   width,
