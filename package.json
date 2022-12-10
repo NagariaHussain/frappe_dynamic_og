@@ -1,0 +1,15 @@
+{
+  "name": "frappe_dynamic_og",
+  "version": "1.0.0",
+  "description": "Dynamically Generate OG Images",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "satori": "^0.0.44"
+  }
+}
