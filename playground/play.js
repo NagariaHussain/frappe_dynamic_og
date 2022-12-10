@@ -1,8 +1,8 @@
 import satori from "satori";
+import { writeFile } from "fs";
+import fsPromises from "fs/promises";
 import { Resvg } from "@resvg/resvg-js";
 import { html as toReactElement } from "satori-html";
-import fsPromises from "fs/promises";
-import { writeFile } from "fs";
 
 const fontFile = await fsPromises.readFile("Poppins-Bold.ttf");
 const font = fontFile;
