@@ -1,0 +1,58 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-12-10 21:58:11.025129",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "for_doctype",
+  "column_break_orqw",
+  "template_html"
+ ],
+ "fields": [
+  {
+   "fieldname": "for_doctype",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "For DocType",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "template_html",
+   "fieldtype": "Code",
+   "label": "Template HTML",
+   "options": "HTML"
+  },
+  {
+   "fieldname": "column_break_orqw",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-12-10 21:59:15.228469",
+ "modified_by": "Administrator",
+ "module": "Frappe Dynamic Og",
+ "name": "OG Image Template",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
