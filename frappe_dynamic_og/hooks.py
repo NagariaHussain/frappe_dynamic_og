@@ -7,6 +7,15 @@ app_description = "Dynamically Generate OG Images"
 app_email = "hussain@frappe.io"
 app_license = "MIT"
 
+
+
+doc_events = {
+	"*": {
+		"on_update": "frappe_dynamic_og.core.utils.generate_and_attach_og_image" 
+    }
+}
+
+
 # Includes in <head>
 # ------------------
 

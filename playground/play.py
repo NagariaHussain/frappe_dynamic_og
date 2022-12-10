@@ -21,9 +21,9 @@ template_html = """
 """
 
 suffix = frappe.generate_hash(length=8)
-file_name = f"og_image_{frappe.scrub(doctype_name)}_{suffix}.png"
 
-output_path = join_path(folder_path, file_name)
+# Maybe add document name too?
+file_name = f"og_image_{frappe.scrub(doctype_name)}_{suffix}.png"
 
 content = frappe.render_template(template_html, {"doc": self})
 content = content.replace("\n", "")
@@ -39,7 +39,7 @@ if not stderr:
     file_doc = frappe.new_doc("File")
     file_doc.file_name = file_name
     file_doc.content = stdout
-    # TODO: Replace with Actual Values 
+    # TODO: Replace with Actual Values from self
     file_doc.attached_to_doctype = "ToDo"
     file_doc.attached_to_name = "f03a0fdbf8"
     file_doc.save()
