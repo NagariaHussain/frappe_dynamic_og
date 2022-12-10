@@ -2,6 +2,84 @@
 # yarn lockfile v1
 
 
+"@resvg/resvg-js-android-arm-eabi@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@resvg/resvg-js-android-arm-eabi/-/resvg-js-android-arm-eabi-2.2.0.tgz#daf811ddf4ce932deafcb42587946f12995848a3"
+  integrity sha512-w3lAI6R5cfxGM5oxX6XhEFob4mJkkyfKm0veUQJOg65J4dznwcaJ54lGuQPfjAPhcHxSk/w+7BvFLjbbjV09qw==
+
+"@resvg/resvg-js-android-arm64@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@resvg/resvg-js-android-arm64/-/resvg-js-android-arm64-2.2.0.tgz#be13a7cb7a5e3041fd98847510586e5229dae082"
+  integrity sha512-rzo0IqUErz1GzPthmU3wB25Vvdyr6KGI+J2WqALgSqmFxJ/sDygT2/6tirb4Lp1IjbvLhzO3uA6SP/sMwcWNfw==
+
+"@resvg/resvg-js-darwin-arm64@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@resvg/resvg-js-darwin-arm64/-/resvg-js-darwin-arm64-2.2.0.tgz#3b4c16f37f0404de9a91ac43458aa033cca39992"
+  integrity sha512-MHJBjUh+xlZeMXcHqGiBO5d5CcgNAd0pXXaOmQtcamfBN5oc9SCJP3z137BEN5RhE6bgz6Wl88Sv1Jh3Wn0nlA==
+
+"@resvg/resvg-js-darwin-x64@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@resvg/resvg-js-darwin-x64/-/resvg-js-darwin-x64-2.2.0.tgz#518d9ee561fb9393a3a0806d304e0ed009835be4"
+  integrity sha512-y6uaW/lWgvqpoeTA2hrgPlvNS7kbduBpUfYCpmk7KzOEMBzUUssOHT+DgqlQ7SZOi01mL6DHeDpAjvzM7K4Ocw==
+
+"@resvg/resvg-js-linux-arm-gnueabihf@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@resvg/resvg-js-linux-arm-gnueabihf/-/resvg-js-linux-arm-gnueabihf-2.2.0.tgz#a807f4fb39d1027666251bbab793e8301b7a82db"
+  integrity sha512-G32NqLnuYilT3z5oD5AKXZvpD/ZPRzP1t2T0dvqQC6kBE6c5ckhdCbyT0gnnarcvMoXP+J/xh7kadEp3V8wFDg==
+
+"@resvg/resvg-js-linux-arm64-gnu@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@resvg/resvg-js-linux-arm64-gnu/-/resvg-js-linux-arm64-gnu-2.2.0.tgz#5a326aaebc7a80895d67323582340219039fb4fc"
+  integrity sha512-R0KJCCyjFcTDFT+nAVlP/CYUMIEjxSkSJsEED9QesulCxMY/aoO52p91FgQrGjecORkASNXovlqS3HsNYbCTOg==
+
+"@resvg/resvg-js-linux-arm64-musl@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@resvg/resvg-js-linux-arm64-musl/-/resvg-js-linux-arm64-musl-2.2.0.tgz#f29f83cd2124aa2903c40751baf52af280990a42"
+  integrity sha512-Ir83lcBsuB6YVkAVPW4AAOzYo/F9kjlx2HA/O3vCjy/Rn5u5Xf2fGANfJxfCHUCtDMcqmM4hjdF2fOzqS9fusw==
+
+"@resvg/resvg-js-linux-x64-gnu@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@resvg/resvg-js-linux-x64-gnu/-/resvg-js-linux-x64-gnu-2.2.0.tgz#1f7816057ffb59e869b33dc2fcd0d7d08257feab"
+  integrity sha512-pH1GdShtIDF3fmQZM9NTEEdZPkNKQ+XUJb7r1jaD8gusdXeD2ejWWi/uvlsugaoMoG0tUmMZi78eVm4IjlY+gw==
+
+"@resvg/resvg-js-linux-x64-musl@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@resvg/resvg-js-linux-x64-musl/-/resvg-js-linux-x64-musl-2.2.0.tgz#45994654d6bf60fd707dab0d567611f411f24a8f"
+  integrity sha512-7n2d4gfcyLb06RE/7aMGwiiMiqeCf/Ze/fBhKs9F2L60GX6rpgDC2PGJmWBiXIwz48PifvxmBiqD9XCUH5YGoA==
+
+"@resvg/resvg-js-win32-arm64-msvc@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@resvg/resvg-js-win32-arm64-msvc/-/resvg-js-win32-arm64-msvc-2.2.0.tgz#1292efdb1954740f03288f91206c111003345f05"
+  integrity sha512-rJWhnui1+P9lakfx92zhm+HInZUU1NdvkL/G5KrFcRI8HH0rfdNHokfKknvuko4e7iUSia7kTsbuKDNe4fErtQ==
+
+"@resvg/resvg-js-win32-ia32-msvc@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@resvg/resvg-js-win32-ia32-msvc/-/resvg-js-win32-ia32-msvc-2.2.0.tgz#e0cd48b8aaa801797dafa5e3da0ef2b72f2c60f9"
+  integrity sha512-GlckTgsrlF9PQlWcXs1EySeGaT8TAkrSGhVZPRvSv46DUpZlhyVVvKMjsvpbDfqWltFkJTEgkTJ6uravnJrEMA==
+
+"@resvg/resvg-js-win32-x64-msvc@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@resvg/resvg-js-win32-x64-msvc/-/resvg-js-win32-x64-msvc-2.2.0.tgz#ce180ca5db98384b6882ff7fa6b03321e3fdc43e"
+  integrity sha512-4coA6J+MfrpbMaPynSLmmiq3DutmvNmCcNFyjnhhnytQW7+8zbrkVZGra7fty3364LY3unZGxS878WRa/AU7tw==
+
+"@resvg/resvg-js@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@resvg/resvg-js/-/resvg-js-2.2.0.tgz#bfd003e6b30d6235ecfacd342253e48a79a04b8f"
+  integrity sha512-Btc6Bht2Y8jBlS1RqVYsPWQaL1WgeGZd/TasmQpCsh0s5Ax1Kw0zyr6DCpvlNYG6b3mNnmJ5ib44A5MIQZmrEQ==
+  optionalDependencies:
+    "@resvg/resvg-js-android-arm-eabi" "2.2.0"
+    "@resvg/resvg-js-android-arm64" "2.2.0"
+    "@resvg/resvg-js-darwin-arm64" "2.2.0"
+    "@resvg/resvg-js-darwin-x64" "2.2.0"
+    "@resvg/resvg-js-linux-arm-gnueabihf" "2.2.0"
+    "@resvg/resvg-js-linux-arm64-gnu" "2.2.0"
+    "@resvg/resvg-js-linux-arm64-musl" "2.2.0"
+    "@resvg/resvg-js-linux-x64-gnu" "2.2.0"
+    "@resvg/resvg-js-linux-x64-musl" "2.2.0"
+    "@resvg/resvg-js-win32-arm64-msvc" "2.2.0"
+    "@resvg/resvg-js-win32-ia32-msvc" "2.2.0"
+    "@resvg/resvg-js-win32-x64-msvc" "2.2.0"
+
 "@shuding/opentype.js@1.4.0-beta.0":
   version "1.4.0-beta.0"
   resolved "https://registry.yarnpkg.com/@shuding/opentype.js/-/opentype.js-1.4.0-beta.0.tgz#5d1e7e9e056f546aad41df1c5043f8f85d39e24b"
@@ -59,6 +137,13 @@ postcss-value-parser@^4.0.2, postcss-value-parser@^4.2.0:
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz#723c09920836ba6d3e5af019f92bc0971c02e514"
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
+satori-html@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/satori-html/-/satori-html-0.3.0.tgz#fbd05e5f7ba23cc4d0193b2b53535ce279f7dbdf"
+  integrity sha512-/NzIu2/FoxsXj4zgBdw2vMbMS77a96VfBcMblPfj1EPs2oxBf9rzNJ7y5tvnm5W+mOWoOpJjDjGSSA5tFv5xdQ==
+  dependencies:
+    ultrahtml "^1.0.0-next.1"
+
 satori@^0.0.44:
   version "0.0.44"
   resolved "https://registry.yarnpkg.com/satori/-/satori-0.0.44.tgz#278d2c383a3248973c93843c0f72da5c69c9eafa"
@@ -76,6 +161,11 @@ string.prototype.codepointat@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/string.prototype.codepointat/-/string.prototype.codepointat-0.2.1.tgz#004ad44c8afc727527b108cd462b4d971cd469bc"
   integrity sha512-2cBVCj6I4IOvEnjgO/hWqXjqBGsY+zwPmHl12Srk9IXSZ56Jwwmy+66XO5Iut/oQVR7t5ihYdLB0GMa4alEUcg==
+
+ultrahtml@^1.0.0-next.1:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/ultrahtml/-/ultrahtml-1.0.4.tgz#06b5d27cdf03de6d114cb9b7ccb0d9abbb0eb493"
+  integrity sha512-sso5lk1F1/Q1crKx0+9/9/rHCykRJFSifYLaShnhgzfJhbEDZdpntClBs7ojhx0lRmQlUtDIxrC/8hBJj5bVPw==
 
 yoga-layout-prebuilt@^1.10.0:
   version "1.10.0"
