@@ -1,4 +1,4 @@
-import scrub
+import frappe
 
 from os.path import abspath
 from subprocess import PIPE, Popen
@@ -20,12 +20,6 @@ template_html = """
 </div>
 """
 
-# Sample: '/Users/mdhussain/Frappe/bench-0/sites/abc.localhost/public/files/frappe_og_images'
-folder_path = abspath(frappe.utils.get_files_path("frappe_og_images", is_private=False))
-
-# Create folder path if not exists
-frappe.create_folder(folder_path)
-
 suffix = frappe.generate_hash(length=8)
 file_name = f"og_image_{frappe.scrub(doctype_name)}_{suffix}.png"
 
@@ -34,10 +28,18 @@ output_path = join_path(folder_path, file_name)
 content = frappe.render_template(template_html, {"doc": self})
 content = content.replace("\n", "")
 
-command = ["node", "play.js", output_path, content]
+command = ["node", "play.js", content]
 
 process = Popen(command, cwd=frappe.get_app_path("frappe_dynamic_og", "../playground"), stdout=PIPE, stderr=PIPE)
 
+stdout = process.communicate()[0]
 stderr = process.communicate()[1]
 
-frappe.msgprint(_("Compiled Successfully"), alert=True)
+if not stderr:
+    file_doc = frappe.new_doc("File")
+    file_doc.file_name = file_name
+    file_doc.content = stdout
+    # TODO: Replace with Actual Values 
+    file_doc.attached_to_doctype = "ToDo"
+    file_doc.attached_to_name = "f03a0fdbf8"
+    file_doc.save()
