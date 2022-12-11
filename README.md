@@ -14,6 +14,19 @@
 - [x] Automatically delete older image files
 - [x] Tests! (yup, I consider it a pretty good feature 😉)
 
+## Installation 📀
+
+Make sure you have Frappe bench installed. You can install this app on your Frappe site by running:
+
+```bash
+bench get-app https://github.com/NagariaHussain/frappe_dynamic_og
+bench --site my_site.localhost install-app frappe_dynamic_og
+```
+
+This app requires Node >= 16 and Frappe Version >= 14.
+
+## Usage
+
 ## Planned Features 📍
 
 - [ ] Delete og image files on trash of document
