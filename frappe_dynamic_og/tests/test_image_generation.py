@@ -103,6 +103,7 @@ class TestImageGeneration(FrappeTestCase):
 				"doctype": "User",
 				"first_name": "Wednesday",
 				"last_name": "Addams",
+				"send_welcome_email": False,
 				"email": "wednesday.addams@netflix.com",
 			}
 		).insert()
