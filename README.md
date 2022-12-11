@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/NagariaHussain/frappe_dynamic_og">
-    <img src="./.github/images/fdog_logo.png" width="250" />
+    <img src="./.github/images/fdog_logo.png" width="380" />
   </a>
 </p>
 <h1 style="font-size: 24px" align="center">Dynamically Generate OG Images in your Frappe sites</h1>
