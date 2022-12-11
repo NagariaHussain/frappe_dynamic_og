@@ -1,3 +1,4 @@
+import path from "path";
 import satori from "satori";
 import fsPromises from "fs/promises";
 import { Resvg } from "@resvg/resvg-js";
@@ -5,9 +6,20 @@ import { html as toReactElement } from "satori-html";
 
 const content = process.argv[2];
 
-// TODO: Can come from fetch if custom google font
-const fontFile = await fsPromises.readFile("Poppins-Bold.ttf");
-const font = fontFile;
+
+// Load Inter Font Files
+const inter_font_path = "fonts/inter/";
+const files = await fsPromises.readdir(inter_font_path);
+const fonts = [];
+
+for (let file of files) {
+  let font = await fsPromises.readFile(path.join(inter_font_path, file));
+  fonts.push({
+    name: "Inter",
+    data: font,
+    style: file.split("-")[1].split(".")[0].toLowerCase(),
+  });
+}
 
 const width = 1920;
 const height = 1080;
@@ -15,13 +27,7 @@ const height = 1080;
 const svg = await satori(toReactElement(content), {
   width,
   height,
-  fonts: [
-    {
-      name: "Poppins",
-      data: font,
-      style: "bold",
-    },
-  ],
+  fonts,
 });
 
 const resvg = new Resvg(svg, {
