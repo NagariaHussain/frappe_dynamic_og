@@ -13,6 +13,7 @@ class ImageGenerator:
         file_name = self.get_file_name()
         content = self.get_processed_html_content()
         stdout, stderr = generate_and_get_image_from_node_process(content)
+        file_doc = None
 
         if not stderr:
             file_doc = self.create_image_file_doc(file_name, stdout)
@@ -21,9 +22,10 @@ class ImageGenerator:
             stderr = stderr.replace("\n", "<br>")
             error_message = f'<span>OG Image Generation Failed. </span><br><div style="font-family: monospace;">{stderr}</div>'
             self.doc.add_comment(text=error_message)
-            self.doc.log_error("Error Generating OG Image", error_message)
+            self.doc.log_error("Error Generating OG Image", stderr)
 
-        self.delete_old_images_if_applicable(file_doc.name)
+        if file_doc:
+            self.delete_old_images_if_applicable(file_doc.name)
 
     def set_image_template(self):
         self.image_template = frappe.db.get_value(
