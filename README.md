@@ -40,4 +40,4 @@ This app requires Node >= 16 and Frappe Version >= 14.
 
 #### License
 
-[MIT](./LICENCE.txt)
+[MIT](./LICENSE.txt)
