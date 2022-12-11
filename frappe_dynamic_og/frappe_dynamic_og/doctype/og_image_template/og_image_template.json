@@ -8,8 +8,9 @@
  "engine": "InnoDB",
  "field_order": [
   "is_enabled",
-  "for_doctype",
   "column_break_orqw",
+  "for_doctype",
+  "section_break_lleg",
   "template_html"
  ],
  "fields": [
@@ -36,11 +37,15 @@
    "fieldname": "is_enabled",
    "fieldtype": "Check",
    "label": "Is Enabled?"
+  },
+  {
+   "fieldname": "section_break_lleg",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-12-11 01:15:41.001741",
+ "modified": "2022-12-11 09:40:28.243163",
  "modified_by": "Administrator",
  "module": "Frappe Dynamic Og",
  "name": "OG Image Template",
