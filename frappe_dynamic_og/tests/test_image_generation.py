@@ -5,14 +5,16 @@ import frappe
 
 from frappe.tests.utils import FrappeTestCase
 from frappe.core.api.file import get_attached_images
+import unittest
 
-class TestImageGeneration(FrappeTestCase):
-	def setUp(self):
+class TestImageGeneration(unittest.TestCase):
+	@classmethod
+	def setUpClass(cls):
 		# Disable any existing template
 		frappe.db.set_value("OG Image Template", {"is_enabled": True}, "is_enabled", False)
 
 		# Create new test template
-		self.test_og_template = frappe.get_doc(
+		cls.test_og_template = frappe.get_doc(
 			{
 				"doctype": "OG Image Template",
 				"for_doctype": "ToDo",
@@ -20,6 +22,7 @@ class TestImageGeneration(FrappeTestCase):
 				"template_html": '<div style="width: 800px; background-color: #ff0000; display: flex;" ><h1>{{ doc.description }}</h1></div>',
 			}
 		)
+		
 
 	def test_does_not_generate_if_template_disabled(self):
 		test_todo_doc = frappe.get_doc({
