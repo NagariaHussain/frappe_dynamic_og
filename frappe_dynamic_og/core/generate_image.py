@@ -15,19 +15,33 @@ def generate_and_attach_og_image(doc, method=None):
     ):
         return
 
+    og_image_template = frappe.db.get_value(
+        "OG Image Template",
+        {"for_doctype": doc.doctype, "is_enabled": 1},
+        ["template_html", "attach_to_image_field", "image_field"],
+        as_dict=True,
+    )
+
     file_name = get_file_name(doc)
-    content = get_processed_html_content(doc)
+    content = get_processed_html_content(doc, og_image_template.template_html)
     stdout, stderr = generate_and_get_image_from_node_process(content)
 
     if not stderr:
-        file_doc = create_file_doc(file_name, stdout, doc.doctype, doc.name)
+        file_doc = create_file_doc(
+            file_name,
+            stdout,
+            doc.doctype,
+            doc.name,
+            og_image_template.attach_to_image_field,
+            og_image_template.image_field,
+            doc
+        )
     else:
         stderr = frappe.safe_decode(stderr)
         stderr = stderr.replace("\n", "<br>")
-        # Maybe add a comment to the document?
-        # + log an error?
-        frappe.throw(f'<div style="font-family: monospace;">{stderr}</div>')
-
+        error_message = f'<span>OG Image Generation Failed. </span><br><div style="font-family: monospace;">{stderr}</div>'
+        doc.add_comment(text=error_message)
+        doc.log_error("Error Generating OG Image", error_message)
     try:
         delete_old_images_if_applicable(doc, file_doc.name)
     except Exception:
@@ -37,13 +51,25 @@ def generate_and_attach_og_image(doc, method=None):
         )
 
 
-def create_file_doc(name, content, attached_to_doctype, attached_to_name):
+def create_file_doc(
+    name,
+    content,
+    attached_to_doctype,
+    attached_to_name,
+    attach_to_image_field,
+    image_field_name,
+    doc
+):
     file_doc = frappe.new_doc("File")
     file_doc.file_name = name
     file_doc.content = content
     file_doc.attached_to_doctype = attached_to_doctype
     file_doc.attached_to_name = attached_to_name
     file_doc.save()
+
+    if attach_to_image_field:
+        file_doc.attached_to_field = image_field_name
+        doc.set(image_field_name, file_doc.file_url)
 
     return file_doc
 
@@ -54,12 +80,7 @@ def get_file_name(doc):
     return f"og_image_{doc_info}_{suffix}.png"
 
 
-def get_processed_html_content(doc):
-    template_html = frappe.db.get_value(
-        "OG Image Template",
-        {"for_doctype": doc.doctype, "is_enabled": 1},
-        "template_html",
-    )
+def get_processed_html_content(doc, template_html):
     content = frappe.render_template(template_html, {"doc": doc})
     return content.replace("\n", "")
 

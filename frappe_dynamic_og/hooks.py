@@ -11,7 +11,7 @@ app_license = "MIT"
 
 doc_events = {
 	"*": {
-		"on_update": "frappe_dynamic_og.core.generate_image.generate_and_attach_og_image" 
+		"on_change": "frappe_dynamic_og.core.generate_image.generate_and_attach_og_image" 
     }
 }
 
