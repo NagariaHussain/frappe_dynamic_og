@@ -9,11 +9,12 @@ const content = process.argv[2];
 const fontFile = await fsPromises.readFile("Poppins-Bold.ttf");
 const font = fontFile;
 
-const width = 1200;
+const width = 1920;
+const height = 1080;
 
 const svg = await satori(toReactElement(content), {
   width,
-  height: 630,
+  height,
   fonts: [
     {
       name: "Poppins",
@@ -34,4 +35,4 @@ const pngData = resvg.render();
 const pngBuffer = pngData.asPng();
 
 // Std Out, maybe let python handle the saving to file?
-process.stdout.write(pngBuffer)
+process.stdout.write(pngBuffer);
