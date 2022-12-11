@@ -5,19 +5,16 @@ import frappe
 
 from frappe.tests.utils import FrappeTestCase
 from frappe.core.api.file import get_attached_images
-import unittest
 
-
-class TestImageGeneration(unittest.TestCase):
-	@classmethod
-	def setUpClass(cls):
+class TestImageGeneration(FrappeTestCase):
+	def setUp(self):
 		# Disable any existing template
 		frappe.db.set_value(
 			"OG Image Template", {"is_enabled": True}, "is_enabled", False
 		)
 
 		# Create new test template
-		cls.test_og_template = frappe.get_doc(
+		self.test_og_template = frappe.get_doc(
 			{
 				"doctype": "OG Image Template",
 				"for_doctype": "ToDo",
@@ -49,3 +46,41 @@ class TestImageGeneration(unittest.TestCase):
 		self.assertTrue(
 			attached_images[test_todo_doc.name][0].startswith("/files/og_image_todo_")
 		)
+
+	def test_deletes_older_images_if_applicable(self):
+		# enable the test template
+		self.test_og_template.is_enabled = True
+		self.test_og_template.save()
+
+		# Turn Off automatic deletion
+		frappe.db.set_single_value(
+			"Frappe Dynamic OG Settings", "automatically_delete_old_images", 0
+		)
+
+		test_todo_doc = frappe.get_doc(
+			{"doctype": "ToDo", "description": "Hello, Hussain!"}
+		).insert()
+
+		attached_images = get_attached_images("ToDo", [test_todo_doc.name])
+		self.assertEqual(len(attached_images[test_todo_doc.name]), 1)
+
+		# Update the document
+		test_todo_doc.description = "Wednesday Addams"
+		test_todo_doc.save()
+
+		# 2 images should be present
+		attached_images = get_attached_images("ToDo", [test_todo_doc.name])
+		self.assertEqual(len(attached_images[test_todo_doc.name]), 2)
+
+		# Turn on automatic deletion
+		frappe.db.set_single_value(
+			"Frappe Dynamic OG Settings", "automatically_delete_old_images", 1
+		)
+
+		# Create a new one
+		test_todo_doc.description = "Sheldon, Raj, Howard and Leonard are my bros!"
+		test_todo_doc.save()
+
+		# Only the latest image must be attached (the other 2 get deleted)
+		attached_images = get_attached_images("ToDo", [test_todo_doc.name])
+		self.assertEqual(len(attached_images[test_todo_doc.name]), 1)
