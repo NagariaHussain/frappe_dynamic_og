@@ -52,10 +52,10 @@ class ImageGenerator:
         file_doc.content = content
         file_doc.attached_to_doctype = self.doc.doctype
         file_doc.attached_to_name = self.doc.name
+        file_doc.attached_to_field = self.image_template.image_field
         file_doc.save()
 
         if self.image_template.attach_to_image_field:
-            file_doc.attached_to_field = self.image_template.image_field
             self.doc.set(self.image_template.image_field, file_doc.file_url)
 
         return file_doc
