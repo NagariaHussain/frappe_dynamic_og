@@ -22,9 +22,11 @@ def generate_and_attach_og_image(doc, method=None):
     if not stderr:
         file_doc = create_file_doc(file_name, stdout, doc.doctype, doc.name)
     else:
+        stderr = frappe.safe_decode(stderr)
+        stderr = stderr.replace("\n", "<br>")
         # Maybe add a comment to the document?
         # + log an error?
-        frappe.throw("Error generating image file")
+        frappe.throw(f'<div style="font-family: monospace;">{stderr}</div>')
 
     try:
         delete_old_images_if_applicable(doc, file_doc.name)
