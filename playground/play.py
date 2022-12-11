@@ -1,8 +1,6 @@
 import frappe
 
-from os.path import abspath
 from subprocess import PIPE, Popen
-from os.path import join as join_path
 
 # will be the doc
 doc = frappe._dict({
