@@ -36,7 +36,7 @@ The most important DocType in this app is **OG Image Template**. When you want t
 
 **The Result:**
 
-![ToDo OG Image Demo](https://user-images.githubusercontent.com/34810212/206919225-66016d1a-562c-4fa4-b778-315803ee70ff.mp4)
+https://user-images.githubusercontent.com/34810212/206919225-66016d1a-562c-4fa4-b778-315803ee70ff.mp4
 
 ### Attach To Image Field
 
@@ -46,7 +46,7 @@ If you want to attach the generated image to a `Attach Image` type field on the 
 
 **The Result:**
 
-![User OG Image Demo](https://user-images.githubusercontent.com/34810212/206919330-63ecd171-e645-4439-aa06-f9d3bf539073.mp4)
+https://user-images.githubusercontent.com/34810212/206919330-63ecd171-e645-4439-aa06-f9d3bf539073.mp4
 
 ## 📍 Planned Features 
 
