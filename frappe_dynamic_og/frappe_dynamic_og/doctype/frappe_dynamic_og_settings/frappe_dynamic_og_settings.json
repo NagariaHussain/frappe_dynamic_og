@@ -12,6 +12,7 @@
  "fields": [
   {
    "default": "0",
+   "description": "Will delete older attached images when a new one is generated for that Document.",
    "fieldname": "automatically_delete_old_images",
    "fieldtype": "Check",
    "label": "Automatically Delete Old Images"
@@ -20,7 +21,7 @@
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2022-12-11 10:10:25.136320",
+ "modified": "2022-12-11 10:20:27.068574",
  "modified_by": "Administrator",
  "module": "Frappe Dynamic Og",
  "name": "Frappe Dynamic OG Settings",
