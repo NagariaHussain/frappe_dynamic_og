@@ -34,6 +34,8 @@ The most important DocType in this app is **OG Image Template**. When you want t
 
 ![Screenshot of OG Image Template For ToDo](.github/images/sample_todo_og_image_template_form_view.png)
 
+The Template HTML field takes a `jinja` template. The document is available in the content as `doc`, so, in the above template `{{ doc.status }}` will be replaced by the status of the `ToDo` document. We are also using the `color` field of `ToDo` as background color of the generated image.
+
 **The Result:**
 
 https://user-images.githubusercontent.com/34810212/206919225-66016d1a-562c-4fa4-b778-315803ee70ff.mp4
