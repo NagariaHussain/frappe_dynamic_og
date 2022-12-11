@@ -1,6 +1,7 @@
 import frappe
 
 from subprocess import PIPE, Popen
+from os.path import join as joinpath
 
 
 def generate_and_attach_og_image(doc, method=None):
@@ -66,7 +67,7 @@ def generate_and_get_image_from_node_process(html_content):
 
     process = Popen(
         command,
-        cwd=frappe.get_app_path("frappe_dynamic_og", "../playground"),
+        cwd=frappe.get_app_path("frappe_dynamic_og", joinpath("..", "playground")),
         stdout=PIPE,
         stderr=PIPE,
     )
