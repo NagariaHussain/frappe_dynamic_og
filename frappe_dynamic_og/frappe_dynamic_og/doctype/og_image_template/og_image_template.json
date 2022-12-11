@@ -8,8 +8,10 @@
  "engine": "InnoDB",
  "field_order": [
   "is_enabled",
+  "attach_to_image_field",
   "column_break_orqw",
   "for_doctype",
+  "image_field",
   "section_break_lleg",
   "template_html"
  ],
@@ -45,11 +47,24 @@
   {
    "fieldname": "section_break_lleg",
    "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "attach_to_image_field",
+   "fieldtype": "Check",
+   "label": "Attach to Image Field?"
+  },
+  {
+   "depends_on": "eval:doc.attach_to_image_field==true",
+   "fieldname": "image_field",
+   "fieldtype": "Data",
+   "label": "Image Field Name",
+   "mandatory_depends_on": "eval:doc.attach_to_image_field==true"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-12-11 10:45:40.002931",
+ "modified": "2022-12-11 14:23:51.213891",
  "modified_by": "Administrator",
  "module": "Frappe Dynamic Og",
  "name": "OG Image Template",
