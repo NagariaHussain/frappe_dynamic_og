@@ -6,6 +6,7 @@ import frappe
 from frappe.tests.utils import FrappeTestCase
 from frappe.core.api.file import get_attached_images
 
+
 class TestImageGeneration(FrappeTestCase):
 	def setUp(self):
 		# Disable any existing template
@@ -84,3 +85,29 @@ class TestImageGeneration(FrappeTestCase):
 		# Only the latest image must be attached (the other 2 get deleted)
 		attached_images = get_attached_images("ToDo", [test_todo_doc.name])
 		self.assertEqual(len(attached_images[test_todo_doc.name]), 1)
+
+	def test_image_attached_to_field_if_applicable(self):
+		new_test_template = frappe.get_doc(
+			{
+				"doctype": "OG Image Template",
+				"for_doctype": "User",
+				"is_enabled": True,
+				"template_html": '<div style="width: 800px; background-color: #00ffe9; display: flex;" ><h1>{{ doc.username }}</h1></div>',
+				"attach_to_image_field": True,
+				"image_field": "banner_image",
+			}
+		).insert()
+
+		test_user_doc = frappe.get_doc(
+			{
+				"doctype": "User",
+				"first_name": "Wednesday",
+				"last_name": "Addams",
+				"email": "wednesday.addams@netflix.com",
+			}
+		).insert()
+
+		attached_images = get_attached_images("User", [test_user_doc.name])
+		attached_images = attached_images[test_user_doc.name]
+		self.assertEqual(len(attached_images), 1)
+		self.assertEqual(test_user_doc.banner_image, attached_images[0])
