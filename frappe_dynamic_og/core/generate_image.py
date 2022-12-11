@@ -1,5 +1,9 @@
 import frappe
 
+from os.path import abspath
+from subprocess import PIPE, Popen
+from os.path import join as join_path
+
 def generate_and_attach_og_image(doc, method=None):
     # TODO: DB call can be (and should be) prevented by caching
     # the list of docs for which the template is enabled
