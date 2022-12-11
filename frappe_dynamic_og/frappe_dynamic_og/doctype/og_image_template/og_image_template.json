@@ -27,7 +27,8 @@
    "fieldname": "template_html",
    "fieldtype": "Code",
    "label": "Template HTML",
-   "options": "HTML"
+   "options": "HTML",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_orqw",
@@ -48,7 +49,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-12-11 10:13:53.717905",
+ "modified": "2022-12-11 10:45:40.002931",
  "modified_by": "Administrator",
  "module": "Frappe Dynamic Og",
  "name": "OG Image Template",
