@@ -5,6 +5,8 @@
 </p>
 <h1 style="font-size: 24px" align="center">Dynamically Generate OG Images in your Frappe sites</h1>
 
+![Server Tests](https://github.com/NagariaHussain/frappe_dynamic_og/actions/workflows/ci.yml/badge.svg)
+
 ## Features 📋
 
 - [x] Define DocType-wise templates for generating images
