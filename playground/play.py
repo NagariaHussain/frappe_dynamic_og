@@ -5,13 +5,11 @@ from subprocess import PIPE, Popen
 from os.path import join as join_path
 
 # will be the doc
-self = frappe._dict({
+doc = frappe._dict({
     "title": "WhatsApp Integration",
-    "name": "whatsapp_integration"
+    "name": "whatsapp_integration",
+    "doctype": "Marketplace App"
 })
-
-# will come from the og image template
-doctype_name = "Marketplace App"
 
 template_html = """
 <div style="color: white; height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column">    
@@ -23,9 +21,9 @@ template_html = """
 suffix = frappe.generate_hash(length=8)
 
 # Maybe add document name too?
-file_name = f"og_image_{frappe.scrub(doctype_name)}_{suffix}.png"
+file_name = f"og_image_{frappe.scrub(doc.doctype)}_{suffix}.png"
 
-content = frappe.render_template(template_html, {"doc": self})
+content = frappe.render_template(template_html, {"doc": doc})
 content = content.replace("\n", "")
 
 command = ["node", "play.js", content]
