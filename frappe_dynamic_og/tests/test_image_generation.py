@@ -87,7 +87,7 @@ class TestImageGeneration(FrappeTestCase):
 		self.assertEqual(len(attached_images[test_todo_doc.name]), 1)
 
 	def test_image_attached_to_field_if_applicable(self):
-		new_test_template = frappe.get_doc(
+		frappe.get_doc(
 			{
 				"doctype": "OG Image Template",
 				"for_doctype": "User",
@@ -97,6 +97,10 @@ class TestImageGeneration(FrappeTestCase):
 				"image_field": "banner_image",
 			}
 		).insert()
+
+		# Remove if already exists, when in local
+		if frappe.db.exists("User", {"name": "wednesday.addams@netflix.com"}):
+			frappe.delete_doc("User", "wednesday.addams@netflix.com")
 
 		test_user_doc = frappe.get_doc(
 			{
