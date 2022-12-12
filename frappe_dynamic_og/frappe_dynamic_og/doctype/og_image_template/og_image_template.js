@@ -8,6 +8,11 @@ frappe.ui.form.on("OG Image Template", {
     // console.log("template_html changed.")
   },
   generate_preview_button(frm) {
-    frm.call("generate_preview_image")
+    frm.call("generate_preview_image").then(() => {
+        frappe.show_alert({
+            message: 'Preview Image Updated',
+            indicator: 'green'
+        })
+    })
   },
 });
