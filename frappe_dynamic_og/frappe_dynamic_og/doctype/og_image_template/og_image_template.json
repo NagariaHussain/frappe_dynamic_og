@@ -13,7 +13,11 @@
   "for_doctype",
   "image_field",
   "section_break_lleg",
-  "template_html"
+  "template_html",
+  "section_break_bnfj",
+  "generate_preview_button",
+  "generate_preview_column",
+  "preview_image"
  ],
  "fields": [
   {
@@ -60,11 +64,30 @@
    "fieldtype": "Data",
    "label": "Image Field Name",
    "mandatory_depends_on": "eval:doc.attach_to_image_field==true"
+  },
+  {
+   "fieldname": "section_break_bnfj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "generate_preview_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "preview_image",
+   "fieldtype": "Image",
+   "hidden": 1,
+   "label": "Preview Image"
+  },
+  {
+   "fieldname": "generate_preview_button",
+   "fieldtype": "Button",
+   "label": "Generate Preview"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-12-11 14:23:51.213891",
+ "modified": "2022-12-12 07:59:02.230502",
  "modified_by": "Administrator",
  "module": "Frappe Dynamic Og",
  "name": "OG Image Template",
