@@ -59,15 +59,14 @@ class TestOGImageCore(FrappeTestCase):
 		test_template.generate_preview_image()
 
 		# preview image should be generated and attached
-		self.assertIsNotNone(test_template.preview_image_file)
-		self.assertIsInstance(test_template.preview_image_file, str)
+		preview_image_url = test_template.preview_image_file
+		self.assertIsNotNone(preview_image_url)
+		self.assertIsInstance(preview_image_url, str)
 
 		# the image should be private
 		file_is_private = frappe.db.get_value(
 			"File",
-			{
-				"file_url": "/private/files/og_image_og_image_template_46f1a39981_bec29990.png"
-			},
+			{"file_url": preview_image_url},
 			"is_private",
 		)
 		self.assertTrue(file_is_private)
