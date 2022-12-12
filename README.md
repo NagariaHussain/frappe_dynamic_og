@@ -32,7 +32,7 @@ This app requires **Node >= 16** and **Frappe Version >= 14**.
 
 The most important DocType in this app is **OG Image Template**. When you want to generate OG images (well, you can use the generated image for anything you want) for a given DocType, just create a new **OG Image Template** document. For example, if I want to generate an OG image for the `ToDo` DocType, I will set the **For Doctype** field in the form to `ToDo`:
 
-![Screenshot of OG Image Template For ToDo](.github/images/sample_todo_og_image_template_form_view.png)
+![Screenshot of OG Image Template For ToDo](https://frappecloud.com/files/sample_todo_og_image_template_form_view.png)
 
 The Template HTML field takes a `jinja` template. The document is available in the content as `doc`, so, in the above template `{{ doc.status }}` will be replaced by the status of the `ToDo` document. We are also using the `color` field of `ToDo` as background color of the generated image.
 
@@ -44,7 +44,7 @@ https://user-images.githubusercontent.com/34810212/206919225-66016d1a-562c-4fa4-
 
 If you want to attach the generated image to a `Attach Image` type field on the document, you can easily do so by checking the "Attach to Image Field?" checkbox and provide the name for the attach image field in the doctype. For instance, if I want to generate an image for the `User` doctype and attach the image to the **Banner Image** (`banner_image`) field, I only need to do this:
 
-![Screenshot of OG Image Template For User](.github/images/sample_user_og_image_template_form_view.png)
+![Screenshot of OG Image Template For User](https://frappecloud.com/files/sample_user_og_image_template_form_view.png)
 
 **The Result:**
 
