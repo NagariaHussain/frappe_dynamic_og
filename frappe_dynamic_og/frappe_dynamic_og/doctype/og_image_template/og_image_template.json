@@ -16,6 +16,7 @@
   "template_html",
   "section_break_bnfj",
   "generate_preview_button",
+  "is_debug_mode_on",
   "preview_image_file",
   "column_break_iaei",
   "preview_image"
@@ -90,11 +91,17 @@
   {
    "fieldname": "column_break_iaei",
    "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_debug_mode_on",
+   "fieldtype": "Check",
+   "label": "Debug Mode"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-12-12 12:37:11.616940",
+ "modified": "2022-12-12 16:32:40.836336",
  "modified_by": "Administrator",
  "module": "Frappe Dynamic Og",
  "name": "OG Image Template",

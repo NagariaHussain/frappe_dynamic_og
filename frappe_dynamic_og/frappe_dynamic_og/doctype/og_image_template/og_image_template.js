@@ -7,12 +7,19 @@ frappe.ui.form.on("OG Image Template", {
     // runs on change
     // console.log("template_html changed.")
   },
+  is_debug_mode_on(frm) {
+    generate_preview_image(frm);
+  },
   generate_preview_button(frm) {
-    frm.call("generate_preview_image").then(() => {
-        frappe.show_alert({
-            message: 'Preview Image Updated',
-            indicator: 'green'
-        })
-    })
+    generate_preview_image(frm);
   },
 });
+
+function generate_preview_image(frm) {
+  frm.call("generate_preview_image").then(() => {
+    frappe.show_alert({
+      message: "Preview Image Updated",
+      indicator: "green",
+    });
+  });
+}

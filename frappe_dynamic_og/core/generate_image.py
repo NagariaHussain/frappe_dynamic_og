@@ -5,15 +5,18 @@ from os.path import join as joinpath
 
 
 class ImageGenerator:
-    def __init__(self, doc, is_preview=False):
+    def __init__(self, doc, is_preview=False, is_debug_mode_on=False):
         self.doc = doc
         self.is_preview = is_preview
+        self.is_debug_mode_on = is_debug_mode_on
         self.set_image_template()
 
     def generate(self):
         file_name = self.get_file_name()
         content = self.get_processed_html_content()
-        stdout, stderr = generate_and_get_image_from_node_process(content)
+        stdout, stderr = generate_and_get_image_from_node_process(
+            content, self.is_debug_mode_on
+        )
         file_doc = None
 
         if not stderr:
@@ -33,11 +36,13 @@ class ImageGenerator:
     def set_image_template(self):
         if self.is_preview:
             # doc is itself the OG Template
-            self.image_template = frappe._dict({
-                "template_html": self.doc.template_html,
-                "attach_to_image_field": True,
-                "image_field": "preview_image_file"
-            })
+            self.image_template = frappe._dict(
+                {
+                    "template_html": self.doc.template_html,
+                    "attach_to_image_field": True,
+                    "image_field": "preview_image_file",
+                }
+            )
             return
 
         self.image_template = frappe.db.get_value(
@@ -116,8 +121,11 @@ def generate_and_attach_og_image(doc, method=None):
     image_generator.generate()
 
 
-def generate_and_get_image_from_node_process(html_content):
+def generate_and_get_image_from_node_process(html_content, is_debug_mode_on=False):
     command = ["node", "play.js", html_content]
+
+    if is_debug_mode_on:
+        command.append("--debug")
 
     process = Popen(
         command,

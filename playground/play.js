@@ -6,6 +6,11 @@ import { html as toReactElement } from "satori-html";
 
 const content = process.argv[2];
 
+// Debug Mode (bounding boxes)
+let isDebugModeOn = false;
+if (process.argv.length === 4 && process.argv[3] === "--debug") {
+  isDebugModeOn = true;
+}
 
 // Load Inter Font Files
 const inter_font_path = "fonts/inter/";
@@ -28,6 +33,7 @@ const svg = await satori(toReactElement(content), {
   width,
   height,
   fonts,
+  debug: isDebugModeOn,
 });
 
 const resvg = new Resvg(svg, {

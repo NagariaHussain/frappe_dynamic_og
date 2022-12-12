@@ -7,36 +7,38 @@ from frappe_dynamic_og.core.generate_image import ImageGenerator
 
 
 class EnabledTemplateAlreadyExistsException(Exception):
-	"""An enabled OG Image Template Already exists"""
+    """An enabled OG Image Template Already exists"""
 
-	pass
+    pass
 
 
 class OGImageTemplate(Document):
-	def before_save(self):
-		if self.has_value_changed("is_enabled"):
-			self.validate_if_enabled_already_exists()
+    def before_save(self):
+        if self.has_value_changed("is_enabled"):
+            self.validate_if_enabled_already_exists()
 
-	def validate_if_enabled_already_exists(self):
-		if self.is_enabled:
-			enabled_exists = frappe.db.exists(
-				"OG Image Template",
-				{
-					"for_doctype": self.for_doctype,
-					"is_enabled": True,
-					"name": ("!=", self.name),
-				},
-			)
+    def validate_if_enabled_already_exists(self):
+        if self.is_enabled:
+            enabled_exists = frappe.db.exists(
+                "OG Image Template",
+                {
+                    "for_doctype": self.for_doctype,
+                    "is_enabled": True,
+                    "name": ("!=", self.name),
+                },
+            )
 
-			if enabled_exists:
-				frappe.throw(
-					"A template is already enabled for this doctype",
-					EnabledTemplateAlreadyExistsException,
-				)
+            if enabled_exists:
+                frappe.throw(
+                    "A template is already enabled for this doctype",
+                    EnabledTemplateAlreadyExistsException,
+                )
 
-	@frappe.whitelist()
-	def generate_preview_image(self):
-		image_generator = ImageGenerator(self, is_preview=True)
-		file_doc = image_generator.generate()
-		self.set("preview_image_file", file_doc.file_url)
-		self.save()
+    @frappe.whitelist()
+    def generate_preview_image(self):
+        image_generator = ImageGenerator(
+            self, is_preview=True, is_debug_mode_on=self.is_debug_mode_on
+        )
+        file_doc = image_generator.generate()
+        self.set("preview_image_file", file_doc.file_url)
+        self.save()
