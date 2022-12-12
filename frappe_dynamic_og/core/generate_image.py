@@ -22,11 +22,7 @@ class ImageGenerator:
         if not stderr:
             file_doc = self.create_image_file_doc(file_name, stdout)
         else:
-            stderr = frappe.safe_decode(stderr)
-            stderr = stderr.replace("\n", "<br>")
-            error_message = f'<span>OG Image Generation Failed. </span><br><div style="font-family: monospace;">{stderr}</div>'
-            self.doc.add_comment(text=error_message)
-            self.doc.log_error("Error Generating OG Image", stderr)
+            self.handle_node_process_error(stderr)
 
         if file_doc:
             self.delete_old_images_if_applicable(file_doc.name)
@@ -104,6 +100,13 @@ class ImageGenerator:
                 "Error Deleting Old OG Images",
                 "There was an error while deleting old OG images",
             )
+
+    def handle_node_process_error(self, stderr):
+        stderr = frappe.safe_decode(stderr)
+        stderr = stderr.replace("\n", "<br>")
+        error_message = f'<span>OG Image Generation Failed. </span><br><div style="font-family: monospace;">{stderr}</div>'
+        self.doc.add_comment(text=error_message)
+        self.doc.log_error("Error Generating OG Image", stderr)
 
 
 def generate_and_attach_og_image(doc, method=None):
