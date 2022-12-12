@@ -116,3 +116,6 @@ class TestImageGeneration(FrappeTestCase):
 		attached_images = attached_images[test_user_doc.name]
 		self.assertEqual(len(attached_images), 1)
 		self.assertEqual(test_user_doc.banner_image, attached_images[0])
+
+	def test_preview_image_generation(self):
+		pass
