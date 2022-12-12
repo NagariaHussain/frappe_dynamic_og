@@ -10,6 +10,7 @@
 ## 📋 Features
 
 - [x] Define DocType-wise templates for generating images
+- [x] "Live" Preview in OG Image Template
 - [x] Automatically re-generates images on document changes
 - [x] Automatically attach the generated image to a particular field in the document
 - [x] Full Inter Font Family supported in the image HTML template
@@ -52,6 +53,14 @@ If you want to attach the generated image to a `Attach Image` type field on the 
 
 https://user-images.githubusercontent.com/34810212/206919330-63ecd171-e645-4439-aa06-f9d3bf539073.mp4
 
+### Preview Image
+
+You can preview your template using the **Generate Preview** button in the `OG Image Template` doctype:
+
+![Template Preview](https://user-images.githubusercontent.com/34810212/207047971-6df567f9-eb2d-4e30-babb-adab4fed994b.png)
+
+You can optionally enable **Debug Mode** which shows *bounding boxes* around your elements.
+
 ## 🌄 Examples
 
 Man at work.
@@ -63,7 +72,6 @@ Man at work.
 - [ ] Update existing OG images on documents in bulk from OG Template form/API
 - [ ] Use something like [this](https://github.com/jonkemp/inline-css) to support style tags instead of manual inline CSS
 - [ ] Only update OG image based on fields used in HTML template
-- [ ] Live Preview while writing template
 - [ ] API to generate OG images dynamically
 
 #### License
