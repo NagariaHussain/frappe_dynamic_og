@@ -16,10 +16,28 @@
   "template_html",
   "section_break_bnfj",
   "generate_preview_button",
-  "generate_preview_column",
-  "preview_image"
+  "preview_image",
+  "preview_image_file"
  ],
  "fields": [
+  {
+   "default": "1",
+   "fieldname": "is_enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Is Enabled?"
+  },
+  {
+   "default": "0",
+   "fieldname": "attach_to_image_field",
+   "fieldtype": "Check",
+   "label": "Attach to Image Field?"
+  },
+  {
+   "fieldname": "column_break_orqw",
+   "fieldtype": "Column Break"
+  },
   {
    "fieldname": "for_doctype",
    "fieldtype": "Link",
@@ -30,35 +48,6 @@
    "reqd": 1
   },
   {
-   "fieldname": "template_html",
-   "fieldtype": "Code",
-   "label": "Template HTML",
-   "options": "HTML",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_orqw",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "1",
-   "fieldname": "is_enabled",
-   "fieldtype": "Check",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Is Enabled?"
-  },
-  {
-   "fieldname": "section_break_lleg",
-   "fieldtype": "Section Break"
-  },
-  {
-   "default": "0",
-   "fieldname": "attach_to_image_field",
-   "fieldtype": "Check",
-   "label": "Attach to Image Field?"
-  },
-  {
    "depends_on": "eval:doc.attach_to_image_field==true",
    "fieldname": "image_field",
    "fieldtype": "Data",
@@ -66,28 +55,41 @@
    "mandatory_depends_on": "eval:doc.attach_to_image_field==true"
   },
   {
-   "fieldname": "section_break_bnfj",
+   "fieldname": "section_break_lleg",
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "generate_preview_column",
-   "fieldtype": "Column Break"
+   "fieldname": "template_html",
+   "fieldtype": "Code",
+   "label": "Template HTML",
+   "options": "HTML",
+   "reqd": 1
   },
   {
-   "fieldname": "preview_image",
-   "fieldtype": "Image",
-   "hidden": 1,
-   "label": "Preview Image"
+   "fieldname": "section_break_bnfj",
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "generate_preview_button",
    "fieldtype": "Button",
    "label": "Generate Preview"
+  },
+  {
+   "fieldname": "preview_image_file",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Preview Image File"
+  },
+  {
+   "fieldname": "preview_image",
+   "fieldtype": "Image",
+   "label": "Preview Image",
+   "options": "preview_image_file"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-12-12 07:59:02.230502",
+ "modified": "2022-12-12 08:35:41.098010",
  "modified_by": "Administrator",
  "module": "Frappe Dynamic Og",
  "name": "OG Image Template",

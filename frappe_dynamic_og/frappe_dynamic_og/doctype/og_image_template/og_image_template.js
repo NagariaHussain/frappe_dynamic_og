@@ -8,6 +8,6 @@ frappe.ui.form.on("OG Image Template", {
     // console.log("template_html changed.")
   },
   generate_preview_button(frm) {
-    console.log("button clicked.");
+    frm.call("generate_preview_image")
   },
 });

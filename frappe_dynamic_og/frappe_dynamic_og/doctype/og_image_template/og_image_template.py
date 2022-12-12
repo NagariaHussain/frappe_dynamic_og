@@ -3,6 +3,7 @@
 
 import frappe
 from frappe.model.document import Document
+from frappe_dynamic_og.core.generate_image import ImageGenerator
 
 
 class EnabledTemplateAlreadyExistsException(Exception):
@@ -32,3 +33,10 @@ class OGImageTemplate(Document):
 					"A template is already enabled for this doctype",
 					EnabledTemplateAlreadyExistsException,
 				)
+
+	@frappe.whitelist()
+	def generate_preview_image(self):
+		image_generator = ImageGenerator(self, is_preview=True)
+		file_doc = image_generator.generate()
+		self.set("preview_image_file", file_doc.file_url)
+		self.save()

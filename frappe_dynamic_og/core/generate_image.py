@@ -5,8 +5,9 @@ from os.path import join as joinpath
 
 
 class ImageGenerator:
-    def __init__(self, doc):
+    def __init__(self, doc, is_preview=False):
         self.doc = doc
+        self.is_preview = is_preview
         self.set_image_template()
 
     def generate(self):
@@ -27,7 +28,18 @@ class ImageGenerator:
         if file_doc:
             self.delete_old_images_if_applicable(file_doc.name)
 
+        return file_doc
+
     def set_image_template(self):
+        if self.is_preview:
+            # doc is itself the OG Template
+            self.image_template = frappe._dict({
+                "template_html": self.doc.template_html,
+                "attach_to_image_field": True,
+                "image_field": "preview_image_file"
+            })
+            return
+
         self.image_template = frappe.db.get_value(
             "OG Image Template",
             {"for_doctype": self.doc.doctype, "is_enabled": 1},
@@ -41,6 +53,10 @@ class ImageGenerator:
         return f"og_image_{doc_info}_{suffix}.png"
 
     def get_processed_html_content(self):
+        if self.is_preview:
+            # don't render jinja template if preview
+            return self.image_template.template_html.replace("\n", "")
+
         content = frappe.render_template(
             self.image_template.template_html, {"doc": self.doc}
         )
