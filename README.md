@@ -36,7 +36,7 @@ The most important DocType in this app is **OG Image Template**. When you want t
 
 The Template HTML field takes a `jinja` template. The document is available in the content as `doc`, so, in the above template `{{ doc.status }}` will be replaced by the status of the `ToDo` document. We are also using the `color` field of `ToDo` as background color of the generated image.
 
-> Please not that when a `div` has more than 1 child, you have to explicitly specify `display:flex;` on it. Please check [satori's documentation](https://github.com/vercel/satori) to learn what HTML element and style properties are supported.
+> Please note that when a `div` has more than 1 child, you have to explicitly specify `display:flex;` on it. Please check [satori's documentation](https://github.com/vercel/satori) to learn what HTML element and style properties are supported.
 
 **The Result:**
 
@@ -54,8 +54,7 @@ https://user-images.githubusercontent.com/34810212/206919330-63ecd171-e645-4439-
 
 ## 🌄 Examples
 
-
-
+Man at work.
 
 ## 📍 Planned Features 
 
