@@ -5,6 +5,10 @@ import frappe
 
 from frappe.tests.utils import FrappeTestCase
 from frappe.core.api.file import get_attached_images
+from frappe_dynamic_og.core.generate_image import (
+	ImageGenerator,
+	EnabledTemplateDoesNotExistException,
+)
 
 
 class TestImageGeneration(FrappeTestCase):
@@ -117,3 +121,15 @@ class TestImageGeneration(FrappeTestCase):
 		self.assertEqual(len(attached_images), 1)
 		self.assertEqual(test_user_doc.banner_image, attached_images[0])
 
+	def test_should_throw_if_enabled_template_does_not_exist(self):
+		self.test_document = frappe.get_doc(
+			{"doctype": "Web Page", "title": "Test Web Page Title"}
+		).insert()
+
+		with self.assertRaises(EnabledTemplateDoesNotExistException):
+			generator = ImageGenerator(self.test_document)
+
+	def tearDown(self):
+		# Clean up docs
+		if hasattr(self, "test_document"):
+			self.test_document.delete()
