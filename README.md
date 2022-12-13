@@ -17,6 +17,7 @@
 - [x] Automatically delete older image files
 - [x] Up to 1920x1080 images (for now.)
 - [x] Tests! (yup, I consider it a pretty good feature 😉)
+- [x] Update existing OG images on documents in bulk from OG Template form/API
 
 ## 📀 Installation
 
@@ -69,10 +70,10 @@ Man at work.
 
 - [ ] Delete og image files on trash of document
 - [ ] Configurable fonts via Google Fonts
-- [ ] Update existing OG images on documents in bulk from OG Template form/API
 - [ ] Use something like [this](https://github.com/jonkemp/inline-css) to support style tags instead of manual inline CSS
 - [ ] Only update OG image based on fields used in HTML template
 - [ ] API to generate OG images dynamically
+- [ ] Queueing of image generation
 
 #### License
 
