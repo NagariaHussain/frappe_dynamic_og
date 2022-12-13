@@ -4,6 +4,12 @@ from subprocess import PIPE, Popen
 from os.path import join as joinpath
 
 
+class EnabledTemplateDoesNotExistException(Exception):
+    """An enabled OG Image Template does not exist for a given doctype"""
+
+    pass
+
+
 class ImageGenerator:
     def __init__(self, doc, is_preview=False, is_debug_mode_on=False):
         self.doc = doc
@@ -12,6 +18,7 @@ class ImageGenerator:
         self.set_image_template()
 
     def generate(self):
+        """Generate OG image using the OG template for the doc and returns the file doc"""
         file_name = self.get_file_name()
         content = self.get_processed_html_content()
         stdout, stderr = generate_and_get_image_from_node_process(
@@ -47,6 +54,12 @@ class ImageGenerator:
             ["template_html", "attach_to_image_field", "image_field"],
             as_dict=True,
         )
+
+        if not self.image_template:
+            frappe.throw(
+                f"Enabled OG Image Template for doctype {self.doc.doctype} does not exist",
+                EnabledTemplateDoesNotExistException,
+            )
 
     def get_file_name(self):
         suffix = frappe.generate_hash(length=8)
