@@ -53,4 +53,3 @@ class OGImageTemplate(Document):
             doc = frappe.get_doc(self.for_doctype, name)
             generator = ImageGenerator(doc)
             generator.generate()
-            doc.save()
