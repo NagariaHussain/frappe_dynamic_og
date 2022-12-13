@@ -22,7 +22,7 @@ class TestImageGeneration(FrappeTestCase):
 				"is_enabled": False,  # enable before using,
 				"template_html": '<div style="width: 800px; background-color: #ff0000; display: flex;" ><h1>{{ doc.description }}</h1></div>',
 			}
-		)
+		).insert()
 
 	def test_does_not_generate_if_template_disabled(self):
 		test_todo_doc = frappe.get_doc(
