@@ -4,13 +4,15 @@
 import frappe
 
 from frappe.tests.utils import FrappeTestCase
+from frappe.core.api.file import get_attached_images
+
 from frappe_dynamic_og.frappe_dynamic_og.doctype.og_image_template.og_image_template import (
 	EnabledTemplateAlreadyExistsException,
 	OGImageTemplate,
 )
 
 
-class TestOGImageCore(FrappeTestCase):
+class TestOGImageTemplate(FrappeTestCase):
 	def setUp(self):
 		# Disable any existing template
 		frappe.db.set_value(
@@ -70,3 +72,22 @@ class TestOGImageCore(FrappeTestCase):
 			"is_private",
 		)
 		self.assertTrue(file_is_private)
+
+	def test_generate_images_for_existing_images_api(self):
+		test_todo_doc = frappe.get_doc(
+			{"doctype": "ToDo", "description": "test"}
+		).insert()
+
+		test_template: OGImageTemplate = frappe.get_doc(
+			{
+				"doctype": "OG Image Template",
+				"for_doctype": "ToDo",
+				"is_enabled": True,
+				"template_html": "test",
+			}
+		).insert()
+
+		test_template.generate_images_for_existing_documents()
+		attached_images = get_attached_images("ToDo", [test_todo_doc.name])
+		self.assertIn(test_todo_doc.name, attached_images)
+		self.assertEqual(len(attached_images[test_todo_doc.name]), 1)
