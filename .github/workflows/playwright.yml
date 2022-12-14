@@ -1,13 +1,11 @@
 name: e2e UI Tests
+
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
 
-concurrency:
-  group: develop-frappe_dynamic_og-${{ github.event.number }}
-  cancel-in-progress: true
 
 jobs:
   tests:
