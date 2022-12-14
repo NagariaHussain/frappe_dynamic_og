@@ -2,6 +2,7 @@
 # See license.txt
 
 import frappe
+import unittest
 
 from frappe.tests.utils import FrappeTestCase
 from frappe.core.api.file import get_attached_images
@@ -9,9 +10,10 @@ from frappe_dynamic_og.core.generate_image import (
 	ImageGenerator,
 	EnabledTemplateDoesNotExistException,
 )
+from frappe_dynamic_og.frappe_dynamic_og.doctype.og_image_template.og_image_template import OGImageTemplate
 
 
-class TestImageGeneration(FrappeTestCase):
+class TestImageGeneration(unittest.TestCase):
 	def setUp(self):
 		# Disable any existing template
 		frappe.db.set_value(
@@ -128,6 +130,22 @@ class TestImageGeneration(FrappeTestCase):
 
 		with self.assertRaises(EnabledTemplateDoesNotExistException):
 			generator = ImageGenerator(self.test_document)
+
+	def test_supports_img_embedding(self):
+		test_template: OGImageTemplate = frappe.get_doc(
+			{
+				"doctype": "OG Image Template",
+				"for_doctype": "ToDo",
+				"is_enabled": True,
+				"template_html": '<div style="display: flex;"><img src="https://frappe.io/files/frappe.png" /><h1>Hello</h1></div>',
+			}
+		).insert()
+
+		image_generator = ImageGenerator(
+            test_template, is_preview=True
+        )
+		file_doc = image_generator.generate()
+		self.assertIsNotNone(file_doc)
 
 	def tearDown(self):
 		# Clean up docs
