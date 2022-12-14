@@ -87,7 +87,6 @@ jobs:
         run: yarn playwright test
 
       - name: Upload Playwright Tests Report
-        working-directory: /home/runner/frappe-bench/apps/frappe_dynamic_og
         uses: actions/upload-artifact@v3
         if: always()
         with:
