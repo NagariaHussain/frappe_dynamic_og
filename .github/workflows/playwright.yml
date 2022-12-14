@@ -1,11 +1,9 @@
-
-name: Server Tests
-
+name: e2e UI Tests
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
+    branches: [ main ]
 
 concurrency:
   group: develop-frappe_dynamic_og-${{ github.event.number }}
@@ -17,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-    name: Server
+    name: Playwright e2e Tests
 
     services:
       mariadb:
@@ -82,10 +80,19 @@ jobs:
         env:
           CI: 'Yes'
 
-      - name: Run Tests
-        working-directory: /home/runner/frappe-bench
-        run: |
-          bench --site test_site set-config allow_tests true
-          bench --site test_site run-tests --app frappe_dynamic_og
-        env:
-          TYPE: server
+      - name: Install Playwright Browsers
+        working-directory: /home/runner/frappe-bench/apps/frappe_dynamic_og
+        run: yarn playwright install --with-deps
+
+      - name: Run Playwright tests
+        working-directory: /home/runner/frappe-bench/apps/frappe_dynamic_og
+        run: yarn playwright test
+
+      - name: Upload Playwright Tests Report
+        working-directory: /home/runner/frappe-bench/apps/frappe_dynamic_og
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

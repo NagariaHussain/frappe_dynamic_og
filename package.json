@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "Dynamically Generate OG Images",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -15,5 +13,8 @@
     "satori": "^0.0.44",
     "satori-html": "^0.3.0"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "@playwright/test": "^1.28.1"
+  }
 }
