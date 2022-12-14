@@ -72,8 +72,8 @@ jobs:
         run: |
           bench get-app frappe_dynamic_og $GITHUB_WORKSPACE
           bench setup requirements --dev
-          bench new-site --db-root-password root --admin-password admin test_site
-          bench --site test_site install-app frappe_dynamic_og
+          bench new-site --db-root-password root --admin-password admin test_site.localhost
+          bench --site test_site.localhost install-app frappe_dynamic_og
           bench build
         env:
           CI: 'Yes'
