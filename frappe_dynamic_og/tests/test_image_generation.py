@@ -2,7 +2,6 @@
 # See license.txt
 
 import frappe
-import unittest
 
 from frappe.tests.utils import FrappeTestCase
 from frappe.core.api.file import get_attached_images
@@ -10,10 +9,12 @@ from frappe_dynamic_og.core.generate_image import (
 	ImageGenerator,
 	EnabledTemplateDoesNotExistException,
 )
-from frappe_dynamic_og.frappe_dynamic_og.doctype.og_image_template.og_image_template import OGImageTemplate
+from frappe_dynamic_og.frappe_dynamic_og.doctype.og_image_template.og_image_template import (
+	OGImageTemplate,
+)
 
 
-class TestImageGeneration(unittest.TestCase):
+class TestImageGeneration(FrappeTestCase):
 	def setUp(self):
 		# Disable any existing template
 		frappe.db.set_value(
@@ -141,9 +142,7 @@ class TestImageGeneration(unittest.TestCase):
 			}
 		).insert()
 
-		image_generator = ImageGenerator(
-            test_template, is_preview=True
-        )
+		image_generator = ImageGenerator(test_template, is_preview=True)
 		file_doc = image_generator.generate()
 		self.assertIsNotNone(file_doc)
 
