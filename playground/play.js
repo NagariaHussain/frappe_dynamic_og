@@ -1,4 +1,5 @@
 import path from "path";
+import "isomorphic-fetch";
 import satori from "satori";
 import fsPromises from "fs/promises";
 import { Resvg } from "@resvg/resvg-js";

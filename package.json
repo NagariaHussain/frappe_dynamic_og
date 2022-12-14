@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@resvg/resvg-js": "^2.2.0",
+    "isomorphic-fetch": "^3.0.0",
     "satori": "^0.0.44",
     "satori-html": "^0.3.0"
   },
