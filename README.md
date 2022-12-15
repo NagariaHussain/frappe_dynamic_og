@@ -69,7 +69,29 @@ You can optionally enable **Debug Mode** which shows *bounding boxes* around you
 
 ## 🌄 Examples
 
-Man at work.
+### Default Template
+
+The below is the default template set when you create a new **OG Image Template** document.
+
+Template HTML:
+
+```html
+<div style="display: flex; background-color: #fff; color: #313B44; height: 100vh; width: 100%; align-items: center; justify-content: center; flex-direction: column"> 
+    <span style="font-size: 60px; font-style: semibold; color: #74808B; text-transform: uppercase;">{{ doc.doctype }}</span>
+    <h1 style="font-size: 120px; font-style: bold;">{{ doc.get_title() }}</h1>
+    <img style="position: absolute;height: 40px;left: 40px;top: 40px;" src="https://frappeframework.com/files/frappeframework-logo2a3e81.png" />
+</div>
+```
+
+Output:
+
+![Default Template](https://user-images.githubusercontent.com/34810212/207801893-fa6f7146-b10d-4efc-b628-d1db29f9dfc1.png)
+
+If you use the above template for the **Web Form** DocType, you will get the below image generated for a web form with title 'Job Opportunity':
+
+![Job Opportunity Web Form OG Image](https://user-images.githubusercontent.com/34810212/207803551-7cd2805e-016e-4674-a03c-a0e5a206cbf5.png)
+
+More examples soon.
 
 ## 📍 Planned Features 
 
