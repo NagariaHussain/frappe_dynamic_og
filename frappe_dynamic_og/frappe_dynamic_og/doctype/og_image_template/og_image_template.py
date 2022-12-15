@@ -41,12 +41,13 @@ class OGImageTemplate(Document):
         )
         file_doc = image_generator.generate()
         self.set("preview_image_file", file_doc.file_url)
-        self.save()
 
     @frappe.whitelist()
     def generate_images_for_existing_documents(self):
         if not self.is_enabled:
             frappe.throw("Please enable this template first")
+
+        self.save()
 
         documents = frappe.get_all(self.for_doctype, pluck="name")
         for name in documents:
