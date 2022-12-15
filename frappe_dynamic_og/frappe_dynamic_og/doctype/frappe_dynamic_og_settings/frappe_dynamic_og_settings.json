@@ -7,7 +7,9 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "automatically_delete_old_images"
+  "automatically_delete_old_images",
+  "column_break_dhtx",
+  "optimise_images"
  ],
  "fields": [
   {
@@ -16,12 +18,23 @@
    "fieldname": "automatically_delete_old_images",
    "fieldtype": "Check",
    "label": "Automatically Delete Old Images"
+  },
+  {
+   "fieldname": "column_break_dhtx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Use the Frappe Framework's image optimisation API to optimise the generated image file.",
+   "fieldname": "optimise_images",
+   "fieldtype": "Check",
+   "label": "Optimise Images"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2022-12-11 10:20:27.068574",
+ "modified": "2022-12-15 19:43:14.376645",
  "modified_by": "Administrator",
  "module": "Frappe Dynamic Og",
  "name": "Frappe Dynamic OG Settings",
