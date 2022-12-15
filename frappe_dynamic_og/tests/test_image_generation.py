@@ -122,6 +122,8 @@ class TestImageGeneration(FrappeTestCase):
 		attached_images = get_attached_images("User", [test_user_doc.name])
 		attached_images = attached_images[test_user_doc.name]
 		self.assertEqual(len(attached_images), 1)
+
+		test_user_doc.reload()
 		self.assertEqual(test_user_doc.banner_image, attached_images[0])
 
 	def test_should_throw_if_enabled_template_does_not_exist(self):

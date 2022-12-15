@@ -90,6 +90,13 @@ class ImageGenerator:
         file_doc.save()
 
         if self.image_template.attach_to_image_field:
+            # set in database as well
+            frappe.db.set_value(
+                self.doc.doctype,
+                self.doc.name,
+                self.image_template.image_field,
+                file_doc.file_url,
+            )
             self.doc.set(self.image_template.image_field, file_doc.file_url)
 
         return file_doc
