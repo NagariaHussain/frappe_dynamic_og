@@ -2,6 +2,7 @@ import frappe
 
 from subprocess import PIPE, Popen
 from os.path import join as joinpath
+from frappe.utils.caching import site_cache
 
 
 class EnabledTemplateDoesNotExistException(Exception):
@@ -16,6 +17,7 @@ class ImageGenerator:
         self.is_preview = is_preview
         self.is_debug_mode_on = is_debug_mode_on
         self.set_image_template()
+        self.set_frappe_og_settings()
 
     def generate(self):
         """Generate OG image using the OG template for the doc and returns the file doc"""
@@ -61,6 +63,16 @@ class ImageGenerator:
                 EnabledTemplateDoesNotExistException,
             )
 
+    def set_frappe_og_settings(self):
+        if self.is_preview:
+            self.frappe_og_settings = frappe._dict({
+                "automatically_delete_old_images": True,
+                "optimise_images": False
+            })
+            return
+
+        self.frappe_og_settings = get_frappe_og_settings()
+
     def get_file_name(self):
         suffix = frappe.generate_hash(length=8)
         doc_info = frappe.scrub(f"{self.doc.doctype}_{self.doc.name}")
@@ -103,10 +115,7 @@ class ImageGenerator:
 
     def delete_old_images_if_applicable(self, new_file_doc_name):
         try:
-            to_delete = frappe.db.get_single_value(
-                "Frappe Dynamic OG Settings", "automatically_delete_old_images"
-            )
-
+            to_delete = self.frappe_og_settings.automatically_delete_old_images
             if to_delete:
                 doc_info = frappe.scrub(f"{self.doc.doctype}_{self.doc.name}")
                 old_image_files = frappe.db.get_all(
@@ -162,3 +171,8 @@ def generate_and_get_image_from_node_process(html_content, is_debug_mode_on=Fals
     )
 
     return process.communicate()
+
+
+@site_cache()
+def get_frappe_og_settings():
+    return frappe.db.get_singles_dict("Frappe Dynamic OG Settings", cast=True)

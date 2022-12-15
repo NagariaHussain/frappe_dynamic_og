@@ -60,11 +60,12 @@ class TestImageGeneration(FrappeTestCase):
 		self.test_og_template.is_enabled = True
 		self.test_og_template.save()
 
-		# Turn Off automatic deletion
-		frappe.db.set_single_value(
-			"Frappe Dynamic OG Settings", "automatically_delete_old_images", 0
-		)
+		frappe_og_settings = frappe.get_single("Frappe Dynamic OG Settings")
 
+		# Turn Off automatic deletion
+		frappe_og_settings.automatically_delete_old_images = False
+		frappe_og_settings.save()
+		
 		test_todo_doc = frappe.get_doc(
 			{"doctype": "ToDo", "description": "Hello, Hussain!"}
 		).insert()
@@ -81,10 +82,9 @@ class TestImageGeneration(FrappeTestCase):
 		self.assertEqual(len(attached_images[test_todo_doc.name]), 2)
 
 		# Turn on automatic deletion
-		frappe.db.set_single_value(
-			"Frappe Dynamic OG Settings", "automatically_delete_old_images", 1
-		)
-
+		frappe_og_settings.automatically_delete_old_images = True
+		frappe_og_settings.save()
+		
 		# Create a new one
 		test_todo_doc.description = "Sheldon, Raj, Howard and Leonard are my bros!"
 		test_todo_doc.save()

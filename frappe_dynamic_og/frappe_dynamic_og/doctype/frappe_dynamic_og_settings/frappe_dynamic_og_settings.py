@@ -3,6 +3,9 @@
 
 # import frappe
 from frappe.model.document import Document
+from frappe_dynamic_og.core.generate_image import get_frappe_og_settings
+
 
 class FrappeDynamicOGSettings(Document):
-	pass
+    def on_update(self):
+        get_frappe_og_settings.clear_cache()
