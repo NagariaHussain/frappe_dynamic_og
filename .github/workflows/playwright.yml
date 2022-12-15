@@ -9,9 +9,6 @@ on:
       - '**.md'
   pull_request:
 
-concurrency:
-  group: ui-main-${{ github.event_name }}-${{ github.event.number }}
-  cancel-in-progress: true
 
 permissions:
   contents: read
