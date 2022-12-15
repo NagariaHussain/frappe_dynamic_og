@@ -4,7 +4,8 @@ set -e
 
 cd ~ || exit
 
-sudo apt update && sudo apt install redis-server libcups2-dev mariadb-client-10.6
+sudo apt update
+sudo apt install libcups2-dev redis-server mariadb-client-10.6
 
 pip install frappe-bench
 
