@@ -41,6 +41,8 @@ frappe.ui.form.on("OG Image Template", {
     if (frm.doc.use_default_template) {
       frm.set_value("template_html", DEFAULT_TEMPLATE);
     }
+
+    generate_preview_image(frm);
   },
 });
 
