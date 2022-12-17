@@ -95,12 +95,12 @@ More examples soon.
 
 ## 📍 Planned Features 
 
-- [ ] Delete og image files on trash of document
 - [ ] Configurable fonts via Google Fonts
 - [ ] Use something like [this](https://github.com/jonkemp/inline-css) to support style tags instead of manual inline CSS
 - [ ] Only update OG image based on fields used in HTML template
 - [ ] API to generate OG images dynamically
 - [ ] Queueing of image generation
+- [ ] Setting to optimize images
 
 #### License
 

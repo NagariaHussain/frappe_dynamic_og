@@ -71,6 +71,7 @@
    "reqd": 1
   },
   {
+   "depends_on": "eval:doc.__islocal!=1",
    "fieldname": "section_break_bnfj",
    "fieldtype": "Section Break"
   },
@@ -110,7 +111,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-12-15 20:26:03.075704",
+ "modified": "2022-12-17 23:33:34.060536",
  "modified_by": "Administrator",
  "module": "Frappe Dynamic Og",
  "name": "OG Image Template",
