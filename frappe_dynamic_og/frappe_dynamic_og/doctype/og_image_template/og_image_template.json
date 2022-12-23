@@ -68,8 +68,8 @@
    "fieldname": "template_html",
    "fieldtype": "Code",
    "label": "Template HTML",
-   "options": "HTML",
-   "reqd": 1
+   "mandatory_depends_on": "eval:doc.use_default_template==false",
+   "options": "HTML"
   },
   {
    "depends_on": "eval:doc.__islocal!=1",
@@ -121,7 +121,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-12-23 23:49:50.696692",
+ "modified": "2022-12-24 00:12:35.575690",
  "modified_by": "Administrator",
  "module": "Frappe Dynamic Og",
  "name": "OG Image Template",

@@ -17,6 +17,16 @@ class OGImageTemplate(Document):
         if self.has_value_changed("is_enabled"):
             self.validate_if_enabled_already_exists()
 
+    def validate(self):
+        self.validate_template_html_exists_if_not_default()
+
+    def validate_template_html_exists_if_not_default(self):
+        if self.use_default_template:
+            return
+
+        if not self.template_html:
+            frappe.throw("Template HTML is required if not using default HTML")
+
     def validate_if_enabled_already_exists(self):
         if self.is_enabled:
             enabled_exists = frappe.db.exists(

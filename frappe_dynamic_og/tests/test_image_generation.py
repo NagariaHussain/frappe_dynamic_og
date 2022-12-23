@@ -27,6 +27,7 @@ class TestImageGeneration(FrappeTestCase):
 				"doctype": "OG Image Template",
 				"for_doctype": "ToDo",
 				"is_enabled": False,  # enable before using,
+				"use_default_template": False,
 				"template_html": '<div style="width: 800px; background-color: #ff0000; display: flex;" ><h1>{{ doc.description }}</h1></div>',
 			}
 		).insert()
@@ -147,6 +148,28 @@ class TestImageGeneration(FrappeTestCase):
 		image_generator = ImageGenerator(test_template, is_preview=True)
 		file_doc = image_generator.generate()
 		self.assertIsNotNone(file_doc)
+
+	def test_template_html_required_for_custom_template(self):
+		# enable the test template
+		self.test_og_template.is_enabled = True
+		self.test_og_template.template_html = ""
+
+		with self.assertRaises(frappe.ValidationError):
+			self.test_og_template.save()
+
+	def test_uses_default_template(self):
+		# enable the test template
+		self.test_og_template.is_enabled = True
+		self.test_og_template.template_html = ""
+		self.test_og_template.use_default_template = True
+		self.test_og_template.save()
+
+		image_generator = ImageGenerator(self.test_og_template, is_preview=True)
+		file_doc = image_generator.generate()
+		self.assertIsNotNone(file_doc)
+
+
+
 
 	def tearDown(self):
 		# Clean up docs
