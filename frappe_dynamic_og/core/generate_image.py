@@ -156,6 +156,9 @@ def generate_and_attach_og_image(doc, method=None):
     image_generator = ImageGenerator(doc)
     image_generator.generate()
 
+    # for desk stuff!
+    doc.reload()
+
 
 def generate_and_get_image_from_node_process(html_content, is_debug_mode_on=False):
     command = ["node", "play.js", html_content]
