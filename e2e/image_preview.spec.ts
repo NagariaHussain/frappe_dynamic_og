@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 test("test", async ({ page }) => {
-  await page.goto("http://abc.localhost:8000/");
+  await page.goto("http://f-dog.test:8000/login");
   await page.getByPlaceholder("jane@example.com").fill("Administrator");
   await page.getByPlaceholder("jane@example.com").press("Tab");
   await page.getByPlaceholder("•••••").fill("admin");
