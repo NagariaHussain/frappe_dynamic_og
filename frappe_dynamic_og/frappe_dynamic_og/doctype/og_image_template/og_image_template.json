@@ -14,6 +14,7 @@
   "image_field",
   "section_break_lleg",
   "use_default_template",
+  "default_template_html",
   "template_html",
   "section_break_bnfj",
   "generate_preview_button",
@@ -63,11 +64,11 @@
   },
   {
    "default": "<div style=\"display: flex; background-color: #fff; color: #313B44; height: 100vh; width: 100%; align-items: center; justify-content: center; flex-direction: column;\"> \n  <span style=\"font-size: 60px; font-style: semibold; color: #74808B; text-transform: uppercase;\">{{ doc.doctype }}</span>\n  <h1 style=\"text-align: center; font-size: 120px; font-style: bold;\">{{ doc.get_title() }}</h1>\n  <img src=\"https://frappeframework.com/files/frappeframework-logo2a3e81.png\" style=\"position: absolute; height: 40px; left: 40px; top: 40px;\">\n</div>",
+   "depends_on": "eval:doc.use_default_template==false",
    "fieldname": "template_html",
    "fieldtype": "Code",
    "label": "Template HTML",
    "options": "HTML",
-   "read_only_depends_on": "eval:doc.use_default_template==true",
    "reqd": 1
   },
   {
@@ -107,11 +108,20 @@
    "fieldname": "use_default_template",
    "fieldtype": "Check",
    "label": "Use Default Template?"
+  },
+  {
+   "default": "<div style=\"display: flex; background-color: #fff; color: #313B44; height: 100vh; width: 100%; align-items: center; justify-content: center; flex-direction: column;\"> \n  <span style=\"font-size: 60px; font-style: semibold; color: #74808B; text-transform: uppercase;\">{{ doc.doctype }}</span>\n  <h1 style=\"text-align: center; font-size: 120px; font-style: bold;\">{{ doc.get_title() }}</h1>\n  <img src=\"https://frappeframework.com/files/frappeframework-logo2a3e81.png\" style=\"position: absolute; height: 40px; left: 40px; top: 40px;\">\n</div>",
+   "depends_on": "eval:doc.use_default_template==true",
+   "fieldname": "default_template_html",
+   "fieldtype": "Code",
+   "label": "Default Template HTML",
+   "options": "HTML",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-12-17 23:33:34.060536",
+ "modified": "2022-12-23 23:49:50.696692",
  "modified_by": "Administrator",
  "module": "Frappe Dynamic Og",
  "name": "OG Image Template",

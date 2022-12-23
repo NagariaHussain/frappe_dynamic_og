@@ -46,6 +46,8 @@ class ImageGenerator:
                     "template_html": self.doc.template_html,
                     "attach_to_image_field": True,
                     "image_field": "preview_image_file",
+                    "default_template_html": self.doc.default_template_html,
+                    "use_default_template": self.doc.use_default_template,
                 }
             )
             return
@@ -53,7 +55,13 @@ class ImageGenerator:
         self.image_template = frappe.db.get_value(
             "OG Image Template",
             {"for_doctype": self.doc.doctype, "is_enabled": 1},
-            ["template_html", "attach_to_image_field", "image_field"],
+            [
+                "template_html",
+                "attach_to_image_field",
+                "image_field",
+                "default_template_html",
+                "use_default_template",
+            ],
             as_dict=True,
         )
 
@@ -65,10 +73,9 @@ class ImageGenerator:
 
     def set_frappe_og_settings(self):
         if self.is_preview:
-            self.frappe_og_settings = frappe._dict({
-                "automatically_delete_old_images": True,
-                "optimise_images": False
-            })
+            self.frappe_og_settings = frappe._dict(
+                {"automatically_delete_old_images": True, "optimise_images": False}
+            )
             return
 
         self.frappe_og_settings = get_frappe_og_settings()
@@ -79,14 +86,19 @@ class ImageGenerator:
         return f"og_image_{doc_info}_{suffix}.png"
 
     def get_processed_html_content(self):
+        html_template = self.get_html_template_from_image_template()
         if self.is_preview:
             # don't render jinja template if preview
-            return self.image_template.template_html.replace("\n", "")
+            return html_template
 
-        content = frappe.render_template(
-            self.image_template.template_html, {"doc": self.doc}
-        )
+        # render the jinja template using the doc
+        content = frappe.render_template(html_template, {"doc": self.doc})
         return content.replace("\n", "")
+
+    def get_html_template_from_image_template(self):
+        if self.image_template.use_default_template:
+            return self.image_template.default_template_html
+        return self.image_template.template_html
 
     def create_image_file_doc(self, name, content):
         file_doc = frappe.new_doc("File")
@@ -109,6 +121,7 @@ class ImageGenerator:
                 self.image_template.image_field,
                 file_doc.file_url,
             )
+            frappe.errprint("doing doc.set")
             self.doc.set(self.image_template.image_field, file_doc.file_url)
 
         return file_doc

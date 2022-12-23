@@ -36,11 +36,13 @@ class OGImageTemplate(Document):
 
     @frappe.whitelist()
     def generate_preview_image(self):
+        self.save()
         image_generator = ImageGenerator(
             self, is_preview=True, is_debug_mode_on=self.is_debug_mode_on
         )
         file_doc = image_generator.generate()
         self.set("preview_image_file", file_doc.file_url)
+        self.reload()
 
     @frappe.whitelist()
     def generate_images_for_existing_documents(self):
