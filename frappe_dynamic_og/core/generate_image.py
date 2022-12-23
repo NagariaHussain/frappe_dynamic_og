@@ -121,7 +121,6 @@ class ImageGenerator:
                 self.image_template.image_field,
                 file_doc.file_url,
             )
-            frappe.errprint("doing doc.set")
             self.doc.set(self.image_template.image_field, file_doc.file_url)
 
         return file_doc
